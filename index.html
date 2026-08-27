@@ -19,14 +19,43 @@
       overflow: hidden; 
       background-color: #ffffff; 
     }
+    #wrapper-iframe-contenedor {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
     iframe { 
-      width: 100%; height: 100%; 
       border: none; display: block; 
+      position: absolute;
+      top: 0; left: 0;
+      transform-origin: 0 0;
     }
   </style>
 </head>
 <body>
-  <!-- ⚠️ SUSTITUYE ESTO POR EL LINK LARGO DE TU APPS SCRIPT -->
-  <iframe src="https://script.google.com/macros/s/AKfycbwe7ErJmyncGoblPn9Xk46MIF9FfudJRsRcC2VFYMcug2AYqvdbudKL8XXQF-M85rkg/exec"></iframe>
+  <div id="wrapper-iframe-contenedor">
+    <!-- ⚠️ SUSTITUYE ESTO POR EL LINK LARGO DE TU APPS SCRIPT -->
+    <iframe id="app-iframe" src="https://script.google.com/macros/s/AKfycbwe7ErJmyncGoblPn9Xk46MIF9FfudJRsRcC2VFYMcug2AYqvdbudKL8XXQF-M85rkg/exec"></iframe>
+  </div>
+
+  <script>
+    const ANCHO_VIRTUAL = 1024; // 👈 mismo valor que usamos en el viewport de Index.html
+
+    function ajustarEscalaIframe() {
+      const iframe = document.getElementById('app-iframe');
+      const anchoReal = window.innerWidth;
+      const altoReal = window.innerHeight;
+      const escala = anchoReal / ANCHO_VIRTUAL;
+
+      iframe.style.width = ANCHO_VIRTUAL + 'px';
+      iframe.style.height = (altoReal / escala) + 'px';
+      iframe.style.transform = 'scale(' + escala + ')';
+    }
+
+    window.addEventListener('load', ajustarEscalaIframe);
+    window.addEventListener('resize', ajustarEscalaIframe);
+    window.addEventListener('orientationchange', ajustarEscalaIframe);
+  </script>
 </body>
 </html>
