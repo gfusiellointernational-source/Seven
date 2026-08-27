@@ -1,7 +1,7 @@
 {
   "name": "7",
   "short_name": "7",
-  "display": "minimal-ui",
+  "display": "standalone",
   "start_url": "./index.html",
   "background_color": "#ffffff",
   "theme_color": "#000000",
