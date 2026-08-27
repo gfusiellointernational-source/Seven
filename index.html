@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>7 - Fanta RPG</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, viewport-fit=cover">
+  <!-- Escala y bloqueo vital para PWA -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Enlace al manifest y al icono alojados en GitHub -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/uxAwB0s.png">
+
   <style>
-    body, html { 
-      margin: 0; padding: 0; 
-      width: 100vw; height: 100vh; 
-      overflow: hidden; 
-      background-color: #ffffff; 
-      display: flex; align-items: center; justify-content: center;
-      font-family: sans-serif; color: #888;
+    body, html {
+      margin: 0; padding: 0;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      background-color: #000000;
+    }
+    iframe {
+      width: 100%; height: 100%;
+      border: none;
+      display: block;
     }
   </style>
 </head>
 <body>
-  Caricamento...
+  <!-- Aquí incrustamos tu motor de Google Apps Script -->
+  <iframe src="https://script.google.com/macros/s/AKfycbwe7ErJmyncGoblPn9Xk46MIF9FfudJRsRcC2VFYMcug2AYqvdbudKL8XXQF-M85rkg/exec"></iframe>
+
+  <!-- Registro del Service Worker para forzar a Chrome a instalar la PWA -->
   <script>
-    // ⚠️ SUSTITUYE ESTO POR EL LINK LARGO DE TU APPS SCRIPT
-    window.location.replace("https://script.google.com/macros/s/AKfycbwe7ErJmyncGoblPn9Xk46MIF9FfudJRsRcC2VFYMcug2AYqvdbudKL8XXQF-M85rkg/exec");
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
   </script>
 </body>
 </html>
