@@ -2,19 +2,38 @@
 <html>
 <head>
   <title>7 - Fanta RPG</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  
+  <!-- Bloqueo estricto de escala para móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
-  <!-- AQUÍ ESTÁ TU LOGO LIBRE DEL BLOQUEO DE GOOGLE -->
+  <!-- Iconos -->
   <link rel="apple-touch-icon" href="https://i.imgur.com/6nceqf3.png">
   <link rel="icon" type="image/png" href="https://i.imgur.com/6nceqf3.png">
   <link rel="manifest" href="manifest.json">
 
   <style>
-    /* Esto quita los bordes y hace que tu juego ocupe toda la pantalla */
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; }
-    iframe { width: 100%; height: 100%; border: none; }
+    /* Forzamos dimensiones físicas absolutas para evitar el encogimiento del doble iframe */
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      width: 100vw; 
+      height: 100vh; 
+      overflow: hidden; 
+      background-color: #ffffff; 
+    }
+    
+    iframe { 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw; 
+      height: 100vh; 
+      border: none; 
+      display: block;
+    }
   </style>
 </head>
 <body>
